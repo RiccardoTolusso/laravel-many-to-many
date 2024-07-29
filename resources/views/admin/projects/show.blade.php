@@ -14,5 +14,17 @@
         @else
             <h5>Tipologia non definita</h5>
         @endisset
+
+        @isset($project->technologies)
+            <hr>
+            <h5>Tecnologie</h5>
+            <ul>
+                @foreach ($project->technologies as $technology)
+                    <li>
+                        {{ $technology->name }}
+                    </li>
+                @endforeach
+            </ul>
+        @endisset
     </div>
 @endsection

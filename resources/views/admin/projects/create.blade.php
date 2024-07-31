@@ -35,13 +35,22 @@
                         <label for="inputType" class="form-label">Tipologia di Progetto</label>
                         <select name="type_id" id="inputType" class="form-control text-center">
                             @foreach ($types as $type)
-                                <option value="{{ $type->id }}" @if (old('type_id', $project?->type?->id) == $type->id) selected @endif>
+                                <option value="{{ $type->id }}" @if (old('type_id', $project->type->id ?? '') == $type->id) selected @endif>
                                     {{ $type->name }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 @endisset
+                <div class="col">
+                    <label for="inputType" class="form-label">Tecnologie utilizzate</label>
+                    @foreach ($technologies as $technology)
+                        <div>
+                            <input type="checkbox" name="technology[]" value="{{ $technology->id }}">
+                            {{ $technology->name }}
+                        </div>
+                    @endforeach
+                </div>
                 <div class="col py-3">
                     @isset($project)
                         <button class="btn btn-success px-4"> Modifica Progetto </button>
